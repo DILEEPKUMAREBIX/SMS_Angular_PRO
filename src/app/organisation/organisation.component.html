@@ -1,0 +1,152 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">{{ 'sms.organisationTitle' | translate }}</h4>
+                        <!-- <p class="card-category"> Manage Organisations</p> -->
+                        <div class="example-button-row">
+                            <button mat-raised-button color="primary" (click)="open(content, true)">Create new SMS Organisation</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Organization ID
+                                    </th>
+                                    <th>
+                                        Org Name Eng
+                                    </th>
+                                    <th>
+                                        Org Name Arb
+                                    </th>
+                                    <th>
+                                        Creation date
+                                    </th>
+                                    <th>
+                                        Creation User
+                                    </th>
+                                    <th>
+                                        Record status
+                                    </th>
+                                    <th>
+                                        Update date
+                                    </th>
+                                    <th>
+                                        Actions
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let org of organisations">
+                                        <td>
+                                            {{org.id}}
+                                        </td>
+                                        <td>
+                                            {{org.orgNameEng}}
+                                        </td>
+                                        <td>
+                                            {{org.orgNameAr}}
+                                        </td>
+                                        <td>
+                                            {{org.createdDate}}
+                                        </td>
+                                        <td class="text-primary">
+                                            {{org.user}}
+                                        </td>
+                                        <td>
+                                            {{org.recordStatus}}
+                                        </td>
+                                        <td>
+                                            {{org.updateDate}}
+                                        </td>
+                                        <td class="text-primary">
+                                            <div class="example-button-row">
+                                                <button mat-raised-button color="primary" (click)="open(content, false, org)">Edit</button>
+                                                <button mat-raised-button color="warn" (click)="openDelete(deleteConfirm, org)">Delete</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{manageOrganisationHeading}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <!-- <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">GRN Date</label>
+                    <input type="text" class="form-control" id="inputEmail4" placeholder="GRN Date">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">GRN NO</label>
+                    <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="transactionObj['grnNO']" [ngModelOptions]="{standalone: true}"
+                        placeholder="GRN NO">
+                </div>
+            </div> -->
+            <div class="form-group">
+                <label for="inputAddress">
+                    <b>Organization Name English</b>
+                </label>
+                <input type="text" class="form-control" id="inputAddress" [(ngModel)]="organisationObj['orgNameEng']" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">
+                    <b>Organization Name Arabic</b>
+                </label>
+                <input type="text" class="form-control" id="inputAddress" [(ngModel)]="organisationObj['orgNameAr']" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">
+                    <b>Record status</b>
+                </label>
+                <input type="text" class="form-control" id="inputAddress" [(ngModel)]="organisationObj['recordStatus']" [ngModelOptions]="{standalone: true}">
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-warn" (click)="modal.close('cancel')">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="saveOrUpdate()">{{isNew?'Save':'Update'}}</button>
+    </div>
+</ng-template>
+
+
+<ng-template #deleteConfirm let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Organisation deletion</h4>
+        <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>
+            <strong>Are you sure you want to delete
+                <span class="text-primary">Organisation:
+                </span> ?</strong>
+        </p>
+        <p>All information associated with this will be permanently deleted.
+            <span class="text-danger">This operation can not be undone.</span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="onDeleteConfirmation()">Ok</button>
+    </div>
+</ng-template>

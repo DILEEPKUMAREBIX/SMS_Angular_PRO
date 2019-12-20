@@ -1,0 +1,59 @@
+::ng-deep .my-class .modal-dialog { 
+    max-width: 50%;
+    width: 50%;
+
+    max-height: 50%;
+    height: 50%;
+}
+
+.modal-header {
+    background: linear-gradient(60deg, #ef5350, #e53935);
+}
+
+.note
+{
+    text-align: center;
+    height: 80px;
+    background: #ef3b3a; 
+    color: #fff;
+    font-weight: bold;
+    line-height: 80px;
+}
+.form-content
+{
+    padding: 5%;
+    border: 1px solid #ced4da;
+    margin-bottom: 2%;
+}
+.form-control{
+    border-radius:1.5rem;
+}
+.btnSubmit
+{
+    border:none;
+    border-radius:1.5rem;
+    padding: 1%;
+    width: 20%;
+    cursor: pointer;
+    background: #ef3b3a;
+    color: #fff;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;   
+    cursor: inherit;
+    display: block;
+}

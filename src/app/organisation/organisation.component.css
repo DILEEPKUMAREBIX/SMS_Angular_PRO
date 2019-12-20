@@ -1,0 +1,11 @@
+::ng-deep .my-class .modal-dialog { 
+    max-width: 50%;
+    width: 50%;
+
+    max-height: 50%;
+    height: 50%;
+}
+
+.modal-header {
+    background: linear-gradient(60deg, #ef5350, #e53935);
+}

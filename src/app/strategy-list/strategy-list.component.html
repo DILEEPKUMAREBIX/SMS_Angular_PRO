@@ -1,0 +1,167 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">{{ 'sms.strategyTitle' | translate }}</h4>
+                        <!-- <p class="card-category"> Manage Organisations</p> -->
+                        <div class="example-button-row">
+                            <button mat-raised-button color="primary" (click)="open(content, true)">Create new SMS Strategy
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Strategy ID
+                                    </th>
+                                    <th>
+                                        Str Name Eng
+                                    </th>
+                                    <th>
+                                        Str Name Arb
+                                    </th>
+                                    <th>
+                                        Creation date
+                                    </th>
+                                    <th>
+                                        Creation User
+                                    </th>
+                                    <th>
+                                        Record status
+                                    </th>
+                                    <th>
+                                        Update date
+                                    </th>
+                                    <th>
+                                        Image
+                                    </th>
+                                    <th>
+                                        Actions
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let str of strategies">
+                                        <td>
+                                            {{str.id}}
+                                        </td>
+                                        <td>
+                                            {{str.strNameEng}}
+                                        </td>
+                                        <td>
+                                            {{str.strNameAr}}
+                                        </td>
+                                        <td>
+                                            {{str.createdDate}}
+                                        </td>
+                                        <td class="text-primary">
+                                            {{str.recordStatus}}
+                                        </td>
+                                        <td>
+                                            {{str.recordStatus}}
+                                        </td>
+                                        <td>
+                                            {{str.updateDate}}
+                                        </td>
+                                        <td>
+                                            <img [src]="getimageBlobUrl(str.image)" width="50" height="50" *ngIf="!isNew"/>
+                                        </td>
+                                        <td class="text-primary">
+                                            <div class="example-button-row">
+                                                <button mat-raised-button color="primary" (click)="open(content, false, str)">Edit</button>
+                                                <button mat-raised-button color="warn" (click)="openDelete(deleteConfirm, str)">Delete</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{manageStrategyHeading}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label for="inputAddress">
+                    <b>Strategy Name English</b>
+                </label>
+                <input type="text" class="form-control" id="inputAddress" [(ngModel)]="strategyObj['strNameEng']" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">
+                    <b>Strategy Name Arabic</b>
+                </label>
+                <input type="text" class="form-control" id="inputAddress" [(ngModel)]="strategyObj['strNameAr']" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">
+                    <b>Record status</b>
+                </label>
+                <input type="text" class="form-control" id="inputAddress" [(ngModel)]="strategyObj['recordStatus']" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="form-group">
+                <label for="inputCity">Organisation</label>
+                <select class="form-control" id="sel1" [ngModelOptions]="{standalone: true}" [(ngModel)]="strategyObj['organisationId']">
+                    <option *ngFor="let org of organisations" [value]="org.id"> {{org.orgNameEng}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div style="position:relative;">
+                    <a class='btn btn-danger' href='javascript:;'>
+                        Choose File...
+                        <input type="file" #myInput (change)="setImage($event.target.files)" accept=".pdf,.jpg,.jpeg,.png" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;'
+                            name="file_source" size="40">
+                    </a>
+                    &nbsp;
+                    <span class='label label-danger' id="upload-file-info">{{fileName}}</span>
+                    <img [src]="imageBlobUrl" width="200" height="100" *ngIf="!isNew"/>
+                    <!-- <img [src]="imageBlobUrl" width="200" height="100" /> -->
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-warn" (click)="modal.close('cancel')">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="saveOrUpdate()">{{isNew?'Save':'Update'}}</button>
+    </div>
+</ng-template>
+
+
+<ng-template #deleteConfirm let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Strategy deletion</h4>
+        <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>
+            <strong>Are you sure you want to delete
+                <span class="text-primary">Strategy:
+                </span> ?</strong>
+        </p>
+        <p>All information associated with this will be permanently deleted.
+            <span class="text-danger">This operation can not be undone.</span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="onDeleteConfirmation()">Ok</button>
+    </div>
+</ng-template>
