@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpParams } from '@angular/common/http';
 import { LoginService } from 'src/app/login/login.service';
+import { TranslateService } from '@ngx-translate/core';
 declare var $: any;
 
 @Component({
@@ -21,11 +22,35 @@ export class LoginComponent implements OnInit, OnDestroy {
     loginForm: FormGroup;
     signUpForm: FormGroup;
     alertType: string;
+    selectedLanguage: string = 'en'
 
-    constructor(private element: ElementRef, public service: LoginService, public router: Router, public fb: FormBuilder) {
+    constructor(private element: ElementRef, public service: LoginService, public router: Router, public fb: FormBuilder, private translate: TranslateService) {
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;
         this.createForm();
+        translate.setDefaultLang('en');
+    }
+
+    useLanguage(languageCode: string, language: string) {
+        this.selectedLanguage = language;
+        this.translate.use(languageCode);
+        var element = document.getElementById("main_body");
+        if (languageCode == 'en') {
+            element.classList.remove("rtl");
+        } else if (languageCode == 'arb') {
+            element.classList.add("rtl");
+        }
+    }
+
+
+    onValueChange(value: boolean) {
+        let languageCode = 'en';
+        if (value) {
+            languageCode = 'arb'
+        } else {
+            languageCode = 'en';
+        }
+        this.useLanguage(languageCode, '');
     }
 
     createForm() {

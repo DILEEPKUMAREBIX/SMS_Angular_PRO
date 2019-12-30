@@ -3,6 +3,10 @@
         "organisationTitle": "ˌôrgəniˈzāSHən",
         "strategyTitle": "إستراتيجية",
         "search": "sərCH...",
-        "menu_organisations": "المنظمات"
+        "menu_organisations": "المنظمات",
+        "login": "Arabic - Log in",
+        "username": "Arabic - User Name",
+        "password": "Arabic - Password",
+        "letgo": "A - Let's go"
     }
 }

@@ -56,6 +56,8 @@ import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http'
 // import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { LoginComponent } from './pages/login/login.component';
+import { UiSwitchModule } from 'ngx-toggle-switch';
+
 
 @NgModule({
   providers: [HttpClient, LoginService],
@@ -92,7 +94,8 @@ import { LoginComponent } from './pages/login/login.component';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ]
 })
 export class MaterialModule { }
@@ -113,6 +116,7 @@ export class MaterialModule { }
     NavbarModule,
     FooterModule,
     HttpClientModule,
+    UiSwitchModule,
     FixedpluginModule, TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -3,6 +3,10 @@
         "organisationTitle": "Organisation",
         "strategyTitle": "Strategy",
         "search": "search...",
-        "menu_organisations": "Organisations"
+        "menu_organisations": "Organisations",
+        "login": "Log in",
+        "username": "User Name",
+        "password": "Password",
+        "letgo": "Let's go"
     }
 }
