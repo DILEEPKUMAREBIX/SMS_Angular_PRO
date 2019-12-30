@@ -53,8 +53,9 @@ import { AppRoutes } from './app.routing';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
+// import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   providers: [HttpClient, LoginService],
@@ -126,7 +127,8 @@ export class MaterialModule { }
     AuthLayoutComponent,
     LoginComponent
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[TranslateModule]
 })
 export class AppModule { }
 
