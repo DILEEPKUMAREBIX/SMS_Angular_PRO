@@ -36,6 +36,7 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatStepperModule,
+  MatFormFieldModule,
 } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
@@ -57,6 +58,8 @@ import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http'
 import { LoginService } from './login/login.service';
 import { LoginComponent } from './pages/login/login.component';
 import { UiSwitchModule } from 'ngx-toggle-switch';
+import { DialogueComponent } from './dialogue/dialogue.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -95,7 +98,10 @@ import { UiSwitchModule } from 'ngx-toggle-switch';
     MatToolbarModule,
     MatTooltipModule,
     HttpClientModule,
-    
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
+    MatRippleModule
   ]
 })
 export class MaterialModule { }
@@ -115,6 +121,7 @@ export class MaterialModule { }
     SidebarModule,
     NavbarModule,
     FooterModule,
+    NgbModule,
     HttpClientModule,
     UiSwitchModule,
     FixedpluginModule, TranslateModule.forRoot({
@@ -130,6 +137,7 @@ export class MaterialModule { }
     AdminLayoutComponent,
     AuthLayoutComponent,
     LoginComponent
+    
   ],
   bootstrap: [AppComponent],
   exports:[TranslateModule]

@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             languageCode = 'en';
         }
         this.useLanguage(languageCode, '');
+        this.service.usedLanguage = languageCode;
     }
 
     createForm() {

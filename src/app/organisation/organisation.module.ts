@@ -7,6 +7,7 @@ import { MaterialModule } from '../app.module';
 import { OrganisationRoutes } from './organisation.routing';
 import { OrganisationComponent } from './organisation.component';
 import { OrganisationService } from './organisation.service';
+import { DialogueComponent } from '../dialogue/dialogue.component';
 
 @NgModule({
     imports: [
@@ -15,7 +16,7 @@ import { OrganisationService } from './organisation.service';
         FormsModule,
         MaterialModule
     ],
-    declarations: [OrganisationComponent],
+    declarations: [OrganisationComponent, DialogueComponent],
     providers: [OrganisationService]
 })
 

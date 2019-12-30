@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, NavigationEnd, NavigationStart } from '@angular
 import { Subscription } from 'rxjs/Subscription';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
+import { LoginService } from 'src/app/login/login.service';
 const misc: any = {
     navbar_menu_visible: 0,
     active_collapse: true,
@@ -28,7 +29,7 @@ export class NavbarComponent implements OnInit {
 
     @ViewChild('app-navbar-cmp', { static: false }) button: any;
 
-    constructor(location: Location, private renderer: Renderer, private element: ElementRef, private router: Router, private translate: TranslateService) {
+    constructor(location: Location, public service: LoginService, private renderer: Renderer, private element: ElementRef, private router: Router, private translate: TranslateService) {
         this.location = location;
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;
@@ -107,6 +108,11 @@ export class NavbarComponent implements OnInit {
 
     ngOnInit() {
         //this.listTitles = ROUTES.filter(listTitle => listTitle);
+        if (this.service.usedLanguage == 'en') {
+            this.selectedLanguage = "English";
+        } else {
+            this.selectedLanguage = "Arabic";
+        }
 
         const navbar: HTMLElement = this.element.nativeElement;
         const body = document.getElementsByTagName('body')[0];

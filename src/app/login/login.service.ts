@@ -9,6 +9,7 @@ export class LoginService {
 
     baseUrl: string = 'http://localhost:8080/';
     loggedInUser: any;
+    usedLanguage: any = 'en';
     constructor(private http: HttpClient) { }
 
     login(loginPayload) {

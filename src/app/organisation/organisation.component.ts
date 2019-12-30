@@ -8,6 +8,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { OrganisationService } from './organisation.service';
 import { LoginService } from '../login/login.service';
+import { DialogueComponent } from '../dialogue/dialogue.component';
 // import { LoginService } from '../login/login.service';
 
 export interface DialogData {
@@ -20,7 +21,7 @@ export interface DialogData {
   selector: 'app-organisation',
   templateUrl: './organisation.component.html',
   styleUrls: ['./organisation.component.css'],
-  // entryComponents: [UpgradeComponent]
+  entryComponents: [DialogueComponent]
 })
 export class OrganisationComponent implements OnInit {
   organisationObj: any = {};
