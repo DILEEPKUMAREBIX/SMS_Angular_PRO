@@ -118,6 +118,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.service.getUserByUserName(this.loginForm.controls.username.value).subscribe(
             (data) => {
                 this.service.loggedInUser = data;
+                window.sessionStorage.setItem('loginInfo', JSON.stringify(data));
                 console.log(this.service.loggedInUser);
                 this.router.navigate(['/', 'dashboard']);
             },
