@@ -7,6 +7,9 @@
         "login": "Log in",
         "username": "User Name",
         "password": "Password",
-        "letgo": "Let's go"
+        "letgo": "Let's go",
+        "smsTitle": "SMS",
+        "newOrgBtn": "Create new SMS Organisation",
+        "newStrBtn": "Create new SMS Strategy"
     }
 }

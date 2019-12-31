@@ -7,6 +7,9 @@
         "login": "Arabic - Log in",
         "username": "Arabic - User Name",
         "password": "Arabic - Password",
-        "letgo": "A - Let's go"
+        "letgo": "A - Let's go",
+        "smsTitle": "A - SMS",
+        "newOrgBtn": "A- Create new SMS Organisation",
+        "newStrBtn": "A - Create new SMS Strategy"
     }
 }

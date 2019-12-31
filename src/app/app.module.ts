@@ -2,43 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
-import { APP_BASE_HREF } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import {
-  MatAutocompleteModule,
-  MatButtonModule,
-  MatButtonToggleModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatChipsModule,
-  MatDialogModule,
-  MatExpansionModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatPaginatorModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatRadioModule,
-  MatRippleModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatSnackBarModule,
-  MatSortModule,
-  MatTableModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatTooltipModule,
-  MatStepperModule,
-  MatFormFieldModule,
-} from '@angular/material';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { AppComponent } from './app.component';
 
@@ -60,51 +25,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { UiSwitchModule } from 'ngx-toggle-switch';
 import { DialogueComponent } from './dialogue/dialogue.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { OrganisationModule } from './organisation/organisation.module';
+import { MaterialModule } from './material.module';
+import { MatNativeDateModule } from '@angular/material';
 
 
-@NgModule({
-  providers: [HttpClient, LoginService],
-  exports: [
-    TranslateModule,
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatStepperModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    HttpClientModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatInputModule,
-    MatRippleModule
-  ]
-})
-export class MaterialModule { }
 
 @NgModule({
   imports: [
@@ -124,6 +49,7 @@ export class MaterialModule { }
     NgbModule,
     HttpClientModule,
     UiSwitchModule,
+    OrganisationModule,
     FixedpluginModule, TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -140,7 +66,8 @@ export class MaterialModule { }
     
   ],
   bootstrap: [AppComponent],
-  exports:[TranslateModule]
+  exports:[TranslateModule, MaterialModule],
+  providers: [LoginService]
 })
 export class AppModule { }
 

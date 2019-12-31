@@ -18,7 +18,8 @@
     <div class="collapse navbar-collapse justify-content-end" id="navigation">
       <form class="navbar-form">
         <div class="input-group no-border">
-          <input type="text" value="" class="form-control" placeholder="Search...">
+
+          <input type="text" value="" class="form-control" placeholder="{{ 'sms.search' | translate }}">
           <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
             <i class="material-icons">search</i>
             <div class="ripple-container"></div>
@@ -35,7 +36,8 @@
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link" href="#pablo" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link" href="#pablo" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
             <i class="material-icons">notifications</i>
             <span class="notification">5</span>
             <p>
@@ -59,7 +61,8 @@
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" id="dropdown09" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
             <span class="flag-icon flag-icon-us"> </span> {{selectedLanguage}}</a>
           <div class="dropdown-menu" aria-labelledby="dropdown09">
             <a class="dropdown-item" (click)="useLanguage('en', 'English')">
