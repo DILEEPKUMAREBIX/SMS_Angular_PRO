@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    this.router.navigate(['/', 'login']);
+    // this.router.navigate(['/', 'login']);
 
     this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
       const body = document.getElementsByTagName('body')[0];
