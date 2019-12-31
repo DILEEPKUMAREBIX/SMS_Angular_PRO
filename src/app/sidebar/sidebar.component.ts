@@ -45,7 +45,7 @@ export class SidebarComponent implements OnInit {
         icontype: 'widgets'
     }, {
         path: '/strategy',
-        title: 'Strategies',
+        title: this.translate.instant('sms.menu_strategies'),
         type: 'link',
         icontype: 'widgets'
     }
